@@ -1,4 +1,3 @@
-
 let unixEpoch;
 let h;
 let m;
@@ -41,6 +40,7 @@ function drawLineFromOriginToCart(x,y, colour, width=1) {
     ctx.moveTo(cartx(0), carty(0));
     ctx.lineTo(cartx(x), carty(y));
     ctx.strokeStyle = colour;
+    ctx.lineWidth = width;
     ctx.stroke();
 }
 
@@ -49,6 +49,7 @@ function drawLineFromCartToCart(x1,y1, x2,y2, colour, width=1) {
     ctx.moveTo(cartx(x1), carty(y1));
     ctx.lineTo(cartx(x2), carty(y2));
     ctx.strokeStyle = colour;
+    ctx.lineWidth = width;
     ctx.stroke();
 }
 ctx.beginPath();
@@ -62,13 +63,13 @@ function upd(){
     ctx.beginPath();
     ctx.arc(cartx(0), carty(0), radius, 0, 2 * Math.PI);
     ctx.strokeStyle = "black";
+    ctx.lineWidth = 2
     ctx.stroke();
 
     // draw the little lines
-    ctx.lineWidth = 2;
     radiusExcludingLittleLine = radius - littleLineLength
     for (let i = 0; i < 12; i++) {
-        drawLineFromCartToCart(radiusExcludingLittleLine*degSin(30*i),radiusExcludingLittleLine*degCos(30*i),radius*degSin(30*i),radius*degCos(30*i),"black")
+        drawLineFromCartToCart(radiusExcludingLittleLine*degSin(30*i),radiusExcludingLittleLine*degCos(30*i),radius*degSin(30*i),radius*degCos(30*i), colour="black", width=2)
     }
     // fun time
     unixEpoch = Date.now()/1000 // from ms to s
@@ -79,12 +80,10 @@ function upd(){
     m = (secondsElapsedInDay/60) % 60
     s = secondsElapsedInDay % 60
 
-    ctx.lineWidth = 5;
-    drawLineFromOriginToCart((hourHandLength*degSin(30*h)),(hourHandLength*degCos(30*h)), "grey", width=6)
-    ctx.lineWidth = 3;
-    drawLineFromOriginToCart((minuteHandLength*degSin(6*m)),(minuteHandLength*degCos(6*m)), "black")
-    ctx.lineWidth = 1;
-    drawLineFromOriginToCart((secondHandLength*degSin(6*s)),(secondHandLength*degCos(6*s)), "red")
+    
+    drawLineFromOriginToCart((hourHandLength*degSin(30*h)),(hourHandLength*degCos(30*h)), colour="grey", width=5)
+    drawLineFromOriginToCart((minuteHandLength*degSin(6*m)),(minuteHandLength*degCos(6*m)), colour="black", width=3)
+    drawLineFromOriginToCart((secondHandLength*degSin(6*s)),(secondHandLength*degCos(6*s)), colour="red", width=1)
     
 
     // update time texts
