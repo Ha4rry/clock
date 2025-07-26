@@ -1,3 +1,15 @@
 #clock {
     border-style:solid;
 }
+
+#hourText {
+    color:grey;
+}
+
+#minuteText {
+    color:black;
+}
+
+#secondText {
+    color:red;
+}
