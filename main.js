@@ -1,4 +1,3 @@
-
 let unixEpoch;
 let h;
 let m;
