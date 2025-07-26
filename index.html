@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>canvas clock</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    
+</head>
+<body>
+    <a href="https://www.desmos.com/calculator/4xyn4ze3sy">the desmos I made to showcase some of my maths behind this.</a>
+    <br>
+    <h1 id="timeText">Current Time: </h1>
+    <canvas width=1024 height=1024 id="clock"></canvas>
+    <br>
+    <p>it uses the unix epoch and your calculated timezone offset. The time text display floors the calculated hour, minute and second value.</p> <!-- make this changeable in the future? -->
+    <script src='main.js'></script>
+</body>
+</html>
