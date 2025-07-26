@@ -1,3 +1,4 @@
+
 let unixEpoch;
 let h;
 let m;
@@ -18,6 +19,12 @@ let secondHandLength = 0.9 * radius
 let littleLineLength = 0.05*radius
 let radiusExcludingLittleLine;
 let timeZoneHourAdjustment = null;
+
+let hourString;
+let minuteString;
+let secondString;
+let timeString;
+let timeStringHTML;
 
 let updDelayMs = 1; // how long between each screen update
 
@@ -81,16 +88,21 @@ function upd(){
     s = secondsElapsedInDay % 60
 
     
-    drawLineFromOriginToCart((hourHandLength*degSin(30*h)),(hourHandLength*degCos(30*h)), colour="grey", width=5)
-    drawLineFromOriginToCart((minuteHandLength*degSin(6*m)),(minuteHandLength*degCos(6*m)), colour="black", width=3)
+    drawLineFromOriginToCart((hourHandLength*degSin(30*h)),(hourHandLength*degCos(30*h)), colour="grey", width=3)
+    drawLineFromOriginToCart((minuteHandLength*degSin(6*m)),(minuteHandLength*degCos(6*m)), colour="black", width=2)
     drawLineFromOriginToCart((secondHandLength*degSin(6*s)),(secondHandLength*degCos(6*s)), colour="red", width=1)
     
 
     // update time texts
-    timeString = `${Math.floor(h).toString().padStart(2,"0")}:${Math.floor(m).toString().padStart(2,"0")}:${Math.floor(s).toString().padStart(2,"0")}`
-    if (timeText.innerText !== `Current Time: ${timeString}`) {
-        timeText.innerText = `Current Time: ${timeString}`
+    hourString = Math.floor(h).toString().padStart(2,"0")
+    minuteString = Math.floor(m).toString().padStart(2,"0")
+    secondString = Math.floor(s).toString().padStart(2,"0")
+    timeStringHTML = `Current Time: <span id="hourText">${hourString}</span>:<span id="minuteText">${minuteString}</span>:<span id="secondText">${secondString}</span>`
+    if (timeText.innerHTML !== timeStringHTML) {
+        timeText.innerHTML = timeStringHTML
     }
+
+    timeString = `${hourString}:${minuteString}:${secondString}`
     if (document.title !== timeString) {
         document.title = timeString;
     }
