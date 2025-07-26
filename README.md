@@ -4,4 +4,4 @@
 
 demonstration of a clock, powered by html5 canvas and some trigonometry. 
 
-[Desmos showcasing some of the maths](https://www.desmos.com/calculator/4xyn4ze3sy)
+[The desmos I made showcasing some of the maths I came up with for this](https://www.desmos.com/calculator/4xyn4ze3sy)
